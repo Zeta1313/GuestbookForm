@@ -1,4 +1,31 @@
+.body {
+    color: grey;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: 1fr, 1fr, 1fr;
+    align-items: center;
+    color: white;
+    width: 80%;
 }
+
+.grid-container message {
+    grid-column: 1 / -1;
+    min-height: 100px;
+}
+
+.checkbox-group {
+    grid-column: 1 / -1;
+}
+
+.grid-container select {
+  grid-column: span 1;
+}
+
+Button {
+    grid-column: 1 / -1;
+    color: green;
+    
+}
+
