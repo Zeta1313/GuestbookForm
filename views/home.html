@@ -1,57 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact form</title>
-    <link rel="icon" href="FormIcon.png">
-    <link rel="stylesheet" href="FormCSS.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form</title>
+  <link rel="stylesheet" href="FormCSS.css">
+  <script src="validation.js" defer></script>
 </head>
 <body>
-      <form id = "contact-form" action = "#" method="get">
-      <div class = "grid-container">
-        <h1>Contact form</h1>
-          <label for="fname">First Name:</label>
-          <input type = "text" id="fname" name="fname">
-          <label for="lname">Last Name:</label>
-          <input type = "text" id="lname" name="lname">
-          <label for="jtitle">Job Title:</label>
-          <input type = "text" id="jtitle" name="jtitle">
-          <label for="Company">Company:</label>
-          <input type = "text" id="Company" name="Company">
-          <label for="lnurl">Linkin URL:</label>
-          <input type = "text" id="lnurl" name="lnurl">
-          <label for="email">Email Adress:</label>
-          <input type = "text" id="email" name="email">
-        <select id = "meet" name = "meet">
-                    <option value="Choose">How did me meet?</option>
-                    <option value="Online">Online</option>
-                    <option value="Inperson">In-Person</option>
-        </select>
-          <label for="Other">Other (Please specify)</label>
-          <input type = "text" id="Other" name="Other">
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" rows="10" cols="50"></textarea>
-        <div class="checkbox-group">
-        <label class="checkbox-item">
-          <input type="checkbox" name="Elist" value="Elist" /> Please add me to your Email list
+  <div class="form-container">
+    <h1>Contact Form</h1>
+    <form id="contactForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" id="firstName" name="first-name">
+          <span class="error" id="errorFirstName">First name is required.</span>
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" id="lastName" name="last-name">
+          <span class="error" id="errorLastName">Last name is required.</span>
+        </div>
+        <div class="form-group">
+          <label>Job Title</label>
+          <input type="text" name="job-title">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Company</label>
+          <input type="text" name="company">
+        </div>
+        <div class="form-group">
+          <label>LinkedIn URL</label>
+          <input type="text" id="linkedin" name="linkedin">
+          <span class="error" id="errorLinkedIn">Invalid link</span>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="text" id="email" name="email">
+          <span class="error" id="errorEmail">Invalid email address.</span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>How did we meet?</label>
+          <select id="meeting" name="meeting">
+            <option value="">Please select</option>
+            <option>Conference</option>
+            <option>Social Event</option>
+            <option>Online</option>
+            <option>Other</option>
+          </select>
+          <span class="error" id="errorMeeting">This field is required.</span>
+        </div>
+        <div class="form-group" id = "addition">
+          <label>Other (please specify)</label>
+          <input type="text" name="other">
+        </div>
+      </div>
+
+      <div class="form-group full-width">
+        <label>Message</label>
+        <textarea name="message" rows="5"></textarea>
+      </div>
+
+      <div class="form-options">
+        <label>
+          <input type="checkbox" id="mailingList" name="mailing-list">
+          Please add me to your mailing list
         </label>
-            <h5>Choose an Email format:</h5>
-            <div class="checkbox-group">
-                <label for="HTML" class = "radio-item">
-                    <input type="radio" id="HTML" name="method"
-                           value="HTML">HTML
-                </label>
-                <label for="Text" class = "radio-item">
-                    <input type="radio" id="Text" name="method"
-                           value="Text">Text
-                </label>
-            </div>
+
+        <div class="email-format">
+          <p>Choose an email format:</p>
+          <label><input type="radio" name="format" value="html"> HTML</label>
+          <label><input type="radio" name="format" value="text"> Text</label>
+        </div>
       </div>
-            <fieldset>
-                <button type = "submit" id = "finalbutton"> Submit </button>
-            </fieldset>
-      </div>
-      </form>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 </body>
 </html>

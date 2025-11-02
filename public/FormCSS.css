@@ -1,31 +1,96 @@
-.body {
-    color: grey;
+body {
+  font-family: Arial, sans-serif;
+  background-color: lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: 1fr, 1fr, 1fr;
-    align-items: center;
-    color: white;
-    width: 80%;
+.form-container {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px black(0,0,0,0.1);
+  width: 850px;
 }
 
-.grid-container message {
-    grid-column: 1 / -1;
-    min-height: 100px;
+h1 {
+  text-align: center;
+  font-size: 1.8em;
+  margin-bottom: 20px;
 }
 
-.checkbox-group {
-    grid-column: 1 / -1;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.grid-container select {
-  grid-column: span 1;
+.form-row {
+  display: flex;
+  gap: 15px;
 }
 
-Button {
-    grid-column: 1 / -1;
-    color: green;
-    
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input,
+select,
+textarea {
+  padding: 8px;
+  border: 1px solid whitesmoke;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.form-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.email-format {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+button {
+  background-color: Green;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-size: 1em;
+  align-self: flex-start;
+}
+
+.error {
+    display: none;
+    color: red;
+}
+
+#addition {
+    display: none;
+}
+
+.email-format {
+    display: none;
+}
