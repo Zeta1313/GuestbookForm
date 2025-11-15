@@ -6,6 +6,16 @@
   <title>Contact Form</title>
   <link rel="stylesheet" href="FormCSS.css">
 </head>
+<header>
+  <nav class="site-nav">
+    <a href="/">Home</a>
+    <a href="/form">Contact Form</a>
+    <a href="/resume">Resume</a>
+    <a href="/admin">Admin Page</a>
+    <a href="www.linkedin.com/in/adrien-bertrand-b8614738a">LinkedIn</a>
+    <a href="https://github.com/Zeta1313">Github</a>
+  </nav>
+</header>
 <body>
         <table id = "order-table" class ="display">
             <thead>
@@ -23,20 +33,26 @@
                 </tr>
             </thead>
             <tbody>
-                <%inputs.forEach(input => { %>
+              <% if (inputs.length === 0) { %>
                 <tr>
+                  <td colspan="10" style="text-align:center;">No submissions found</td>
+                </tr>
+              <% } else { %>
+                <% inputs.forEach(input => { %>
+                  <tr>
                     <td><%= input.fname %> <%= input.lname %></td>
                     <td><%= input.title %></td>
-                    <td><%= input.Company %></td>
+                    <td><%= input.company %></td>
                     <td><%= input.LN %></td>
                     <td><%= input.EA %></td>
                     <td><%= input.meeting %></td>
-                    <td><%= input.addition%></td>
-                    <td><%= input.message%></td>
-                    <td><%= input.format%></td>
-                    <td><%= input.timestamp%></td>
-                </tr>
-                <%}); %>
+                    <td><%= input.addition %></td>
+                    <td><%= input.message %></td>
+                    <td><%= input.format %></td>
+                    <td><%= input.timestamp %></td>
+                  </tr>
+                <% }) %>
+              <% } %>
             </tbody>
         </table>
 </body>
