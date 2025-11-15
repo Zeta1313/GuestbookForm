@@ -6,34 +6,42 @@ const PORT = 3025;
 
 const inputs = [];
 
-app.use(express.urlencoded({ extended: true }));
-
+app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.sendFile(`${import.meta.dirname}/views/home.html`);
+    res.render('home');
+});
+
+app.get('/form', (req, res) => {
+    res.render('form');
+});
+
+app.get('/resume', (req, res) => {
+    res.render('resume');
 });
 
 app.post('/confirmation', (req, res) => {
     const forminput = {
-  fname: req.body["first-name"],
-  lname: req.body["last-name"],
-  title: req.body["job-title"],
-  company: req.body.company,
-  LN: req.body.linkedin,
-  EA: req.body.email,
-  meeting: req.body.meeting,
-  addition: req.body.other,
-  message: req.body.message,
-  format: req.body.format
-    };
+        fname: req.body.firstName,
+        lname: req.body.lastName,
+        title: req.body.title,
+        company: req.body.company,
+        LN: req.body.linkedIn,
+        EA: req.body.email,
+        meeting: req.body.meeting,
+        addition: req.body.Eaddition,
+        message: req.body.message,
+        format: req.body.format
+    }
+    forminput.timestamp = new Date();
     inputs.push(forminput);
-    res.sendFile(`${import.meta.dirname}/views/confirmation.html`);
+    res.render('confirmation');
 });
 
 app.get('/admin', (req, res) => {
-    res.send(inputs);
+    res.render('admin', {inputs});
 });
 
 app.listen(PORT, () => {

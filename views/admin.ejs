@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form</title>
+  <link rel="stylesheet" href="FormCSS.css">
+</head>
+<body>
+        <table id = "order-table" class ="display">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Company</th>
+                    <th>LinkedIn</th>
+                    <th>Email</th>
+                    <th>Meeting</th>
+                    <th>Additional meeting details</th>
+                    <th>Message</th>
+                    <th>Format</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%inputs.forEach(input => { %>
+                <tr>
+                    <td><%= input.fname %> <%= input.lname %></td>
+                    <td><%= input.title %></td>
+                    <td><%= input.Company %></td>
+                    <td><%= input.LN %></td>
+                    <td><%= input.EA %></td>
+                    <td><%= input.meeting %></td>
+                    <td><%= input.addition%></td>
+                    <td><%= input.message%></td>
+                    <td><%= input.format%></td>
+                    <td><%= input.timestamp%></td>
+                </tr>
+                <%}); %>
+            </tbody>
+        </table>
+</body>
+</html>
