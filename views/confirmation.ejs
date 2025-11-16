@@ -21,6 +21,36 @@
     <div class="form-container">
       <h1>Submission sucessful!</h1>
       <h2>We'll get back to you shortly</h2>
+        <table id = "order-table" class ="display">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Company</th>
+                    <th>LinkedIn</th>
+                    <th>Email</th>
+                    <th>Meeting</th>
+                    <th>Details</th>
+                    <th>Message</th>
+                    <th>Format</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                  <tr>
+                    <td><%= forminput.fname %> <%= forminput.lname %></td>
+                    <td><%= forminput.title %></td>
+                    <td><%= forminput.company %></td>
+                    <td><%= forminput.LN %></td>
+                    <td><%= forminput.EA %></td>
+                    <td><%= forminput.meeting %></td>
+                    <td><%= forminput.addition %></td>
+                    <td><%= forminput.message %></td>
+                    <td><%= forminput.format %></td>
+                    <td><%= forminput.timestamp %></td>
+                  </tr>
+            </tbody>
+        </table>
       <form action="/" method="get">
         <button type="submit">Return to Main Page</button>
       </form>
