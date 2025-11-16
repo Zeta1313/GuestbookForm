@@ -39,7 +39,7 @@ app.post('/confirmation', (req, res) => {
     }
     forminput.timestamp = new Date();
     inputs.push(forminput);
-    res.render('confirmation');
+    res.render('confirmation', {forminput});
 });
 
 app.get('/admin', (req, res) => {
