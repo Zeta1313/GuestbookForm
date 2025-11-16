@@ -13,15 +13,11 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.render('home');
+    res.render('resume');
 });
 
 app.get('/form', (req, res) => {
     res.render('form');
-});
-
-app.get('/resume', (req, res) => {
-    res.render('resume');
 });
 
 app.post('/confirmation', (req, res) => {
