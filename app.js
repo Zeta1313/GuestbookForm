@@ -16,8 +16,6 @@ const pool = mysql2.createPool({
 
 const PORT = 3025;
 
-const inputs = [];
-
 app.use(express.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');
@@ -34,24 +32,39 @@ app.get('/form', (req, res) => {
 
 app.post('/confirmation', async (req, res) => {
     try {
-    const sql = 'INSERT INTO contacts fname, lname, title, company, LN, EA, meeting, addition, format, timestamps';
+        const sql = `INSERT INTO contacts (fname, lname, title, company, LN, EA, meeting, addition, message, format, timestamps)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+
         const forminput = {
-        fname: req.body.firstName,
-        lname: req.body.lastName,
-        title: req.body.title,
-        company: req.body.company,
-        LN: req.body.linkedIn,
-        EA: req.body.email,
-        meeting: req.body.meeting,
-        addition: req.body.Eaddition,
-        message: req.body.message,
-        format: req.body.format
-    }
-    forminput.timestamp = new Date();
+            fname: req.body.firstName,
+            lname: req.body.lastName,
+            title: req.body.title || null,
+            company: req.body.company || null,
+            LN: req.body.linkedIn || null,
+            EA: req.body.email || null,
+            meeting: req.body.meeting,
+            addition: req.body.other || null,
+            message: req.body.message || null,
+            format: req.body.format || null,
+            timestamps: new Date()
+        };
+        const params = [
+            forminput.fname,
+            forminput.lname,
+            forminput.title,
+            forminput.company,
+            forminput.LN,
+            forminput.EA,
+            forminput.meeting,
+            forminput.addition,
+            forminput.message,
+            forminput.format,
+            forminput.timestamps
+        ];
 
-    const [result] = await pool.execute(sql, forminput);
+        const [result] = await pool.execute(sql, params);
 
-    res.render('confirmation', {result});
+    res.render('confirmation', {forminput});
     }
     catch(err) {
         console.error('Database error:', err);
@@ -61,8 +74,8 @@ app.post('/confirmation', async (req, res) => {
 
 app.get('/admin', async (req, res) => {
     try {
-        const [orders] = await pool.query('SELECT * FROM contacts');
-        res.render('admin', { orders: orders });
+        const [inputs] = await pool.query('SELECT * FROM contacts');
+        res.render('admin', { inputs: inputs });
     }
     catch(err) {
         console.error('Database error:', err);
